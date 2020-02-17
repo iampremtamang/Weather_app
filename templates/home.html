@@ -6,5 +6,22 @@
 
 
 {% block content %}
-  
+
+    {% if api %}
+
+        {% if api == "Error..." %}
+            There is an error, please try again......
+        {% else %}
+            Air Quality: {{api.0.AQI}} <br>
+            Area: {{api.0.ReportingArea}} <br>
+            Category: {{api.0.Category.Name}}
+            <br><br><br>
+            Air Quality: {{api.1.AQI}} <br>
+            Area: {{api.1.ReportingArea}} <br>
+            Category: {{api.1.Category.Name}}
+        {% endif %}
+        
+    {% endif %}
+
+
 {% endblock content %}
