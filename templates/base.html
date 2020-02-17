@@ -10,25 +10,40 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style type="text/css">
+        * {
+             margin:0;
+             padding:0;
+             box-sizing: border-box;
+        }
+
+        body {  font-family: 'Lato', sans-serif;}
+
+
+        .good { background:#0C0 !important;  color: #fff;}
+        .moderate { background:#ff0; }
+        .usg { background:#F90; }
+        .Unhealthy { background: #F00; color: #fff;}
+        .very-Unhealthy { background: #906; color: #fff; }
+        .Hazardous { background: #600; color: #fff;}
+
+    </style>
   </head>
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'home' %}">Weather App</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About Me</a>
+              <a class="nav-link" href="{% url 'about' %}">About Me</a>
           </li>
-
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'home' %}">
+          {% csrf_token %}
+          <input class="form-control mr-sm-2" type="search" placeholder="Enter Zipcode" name="zipcode" aria-label="Search">
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Lookup</button>
         </form>
       </div>
     </nav>

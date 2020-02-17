@@ -7,20 +7,21 @@
 
 {% block content %}
 
+
     {% if api %}
 
         {% if api == "Error..." %}
             There is an error, please try again......
         {% else %}
-            Air Quality: {{api.0.AQI}} <br>
-            Area: {{api.0.ReportingArea}} <br>
-            Category: {{api.0.Category.Name}}
-            <br><br><br>
-            Air Quality: {{api.1.AQI}} <br>
-            Area: {{api.1.ReportingArea}} <br>
-            Category: {{api.1.Category.Name}}
+        <div class="jumbotron {{category_name}}" style="margin-top:40px;">
+
+              <h1 class="display-4">{{api.0.Category.Name}}</h1>
+              <p class="lead">Current {{api.0.ReportingArea}}: {{api.0.AQI}} </p>
+              <p>{{category_description}}</p>
+        </div>
+
         {% endif %}
-        
+
     {% endif %}
 
 
